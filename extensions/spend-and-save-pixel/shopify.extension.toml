@@ -1,0 +1,13 @@
+name = "spend-and-save-pixel"
+type = "web_pixel_extension"
+uid = "9d587d33-b0c2-b9f5-7006-022cc839fd8410176ed2"
+
+runtime_context = "strict"
+
+[settings]
+type = "object"
+
+[settings.fields.endpoint]
+name = "Reporting endpoint (optional)"
+description = "HTTPS URL that receives a JSON payload per completed checkout with the tier savings. Leave blank to only log in the browser console."
+type = "single_line_text_field"
