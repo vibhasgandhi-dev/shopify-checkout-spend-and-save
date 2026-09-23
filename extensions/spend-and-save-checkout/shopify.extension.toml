@@ -1,11 +1,11 @@
 api_version = "2026-07"
 
 [[extensions]]
-name = "t:name"
+name = "Spend & save progress"
 handle = "spend-and-save-checkout"
 type = "ui_extension"
 uid = "1d9f4141-dc72-bd7e-2ae8-2b4fb81484bc8b683afd"
-description = "t:description"
+description = "Tier progress in checkout and savings on the thank-you page"
 
 # Static targets: they render automatically once the app is installed, no checkout editor placement needed.
 [[extensions.targeting]]
