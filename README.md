@@ -8,7 +8,7 @@ Built by Vibhas Gandhi on Checkout UI Extensions API 2026-07 (Preact + Polaris w
 
 | Piece | Target | What the shopper sees |
 |-------|--------|-----------------------|
-| `Checkout.jsx` | `purchase.checkout.reductions.render-before` | A "Spend & save" section in the order summary: progress bar to the top tier, current reward, and how much more unlocks the next one. Updates live as the cart changes. |
+| `Checkout.jsx` | `purchase.checkout.cart-line-list.render-after` | A "Spend & save" section under the order-summary line items: progress bar to the top tier, current reward, and how much more unlocks the next one. Updates live as the cart changes. |
 | `ThankYou.jsx` | `purchase.thank-you.customer-information.render-after` | "You saved $X on this order" banner (summed from discount allocations) plus the next-tier nudge. |
 | `spend-and-save-pixel` | Web pixel, `checkout_completed` | Logs subtotal, total, discount applications and the amount saved; optionally POSTs the JSON to an HTTPS endpoint set in the pixel settings. |
 

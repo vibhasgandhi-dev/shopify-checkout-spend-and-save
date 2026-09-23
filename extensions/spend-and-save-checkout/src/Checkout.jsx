@@ -2,7 +2,7 @@ import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {readTiers, tierStatus, formatMoney} from './lib/tiers';
 
-// Checkout: "Spend & save" progress, rendered just above the discounts in the order summary.
+// Checkout: "Spend & save" progress, rendered under the line items in the order summary.
 export default async () => {
   render(<SpendAndSave />, document.body);
 };
