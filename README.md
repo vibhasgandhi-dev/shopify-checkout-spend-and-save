@@ -12,7 +12,7 @@ Built by Vibhas Gandhi on Checkout UI Extensions API 2026-07 (Preact + Polaris w
 | `ThankYou.jsx` | `purchase.thank-you.customer-information.render-after` | "You saved $X on this order" banner (summed from discount allocations) plus the next-tier nudge. |
 | `spend-and-save-pixel` | Web pixel, `checkout_completed` | Logs subtotal, total, discount applications and the amount saved; optionally POSTs the JSON to an HTTPS endpoint set in the pixel settings. |
 
-Both UI targets are **static**, so they render as soon as the app is installed; no checkout editor placement is needed. Tiers are read from the shop metafield `$app:tiers` (same JSON shape as the Function's config) and fall back to the demo tiers (100/5%, 200/10%, 500/15% + free shipping).
+Both UI targets are **static**. On a store with a customised checkout configuration (Shopify Plus checkout editor), the block still has to be added once in the editor (Order summary → Add block → the app's block) and the configuration saved; until then the checkout page does not even load the extension bundle. The `purchase.checkout.reductions.render-before` target was the first choice, but that slot does not exist when the store has no discount codes, so the progress block sits under the cart line list instead. Tiers are read from the shop metafield `$app:tiers` (same JSON shape as the Function's config) and fall back to the demo tiers (100/5%, 200/10%, 500/15% + free shipping).
 
 ## Layout
 
@@ -38,5 +38,6 @@ shopify app deploy                                        # release a version
 
 - The `checkout_ui` template only ships a `preact` flavour; the CLI's `--flavor` flag rejects it, so generate it through a TTY (`script -q /dev/null shopify app generate extension --template checkout_ui …`) and accept the default.
 - The web pixel template is `web_pixel`, not `web_pixel_extension`.
+- The checkout editor shows `t:name` unless `name` in `shopify.extension.toml` is a literal string.
 - Delete the template's `locales/fr.json` (or mirror its keys in `en.default.json`) or `shopify app deploy` fails localization validation.
 - Read `shopify.cost.*` and `shopify.discountAllocations` as signals (`.value`) inside the component that renders them so only that component rerenders.
