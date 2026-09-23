@@ -10,7 +10,7 @@ Built by Vibhas Gandhi on Checkout UI Extensions API 2026-07 (Preact + Polaris w
 |-------|--------|-----------------------|
 | `Checkout.jsx` | `purchase.checkout.cart-line-list.render-after` | A "Spend & save" section under the order-summary line items: progress bar to the top tier, current reward, and how much more unlocks the next one. Updates live as the cart changes. |
 | `ThankYou.jsx` | `purchase.thank-you.customer-information.render-after` | "You saved $X on this order" banner (summed from discount allocations) plus the next-tier nudge. |
-| `spend-and-save-pixel` | Web pixel, `checkout_completed` | Logs subtotal, total, discount applications and the amount saved; optionally POSTs the JSON to an HTTPS endpoint set in the pixel settings. |
+| `spend-and-save-pixel` | Web pixel, `checkout_completed` | Logs subtotal, total, discount applications and the amount saved; POSTs the JSON to an HTTPS URL when the pixel `mode` setting is a URL instead of "console". |
 
 Both UI targets are **static**. On a store with a customised checkout configuration (Shopify Plus checkout editor), the block still has to be added once in the editor (Order summary → Add block → the app's block) and the configuration saved; until then the checkout page does not even load the extension bundle. The `purchase.checkout.reductions.render-before` target was the first choice, but that slot does not exist when the store has no discount codes, so the progress block sits under the cart line list instead. Tiers are read from the shop metafield `$app:tiers` (same JSON shape as the Function's config) and fall back to the demo tiers (100/5%, 200/10%, 500/15% + free shipping).
 

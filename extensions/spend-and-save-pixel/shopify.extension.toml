@@ -7,7 +7,10 @@ runtime_context = "strict"
 [settings]
 type = "object"
 
-[settings.fields.endpoint]
-name = "Reporting endpoint (optional)"
-description = "HTTPS URL that receives a JSON payload per completed checkout with the tier savings. Leave blank to only log in the browser console."
+[settings.fields.mode]
+name = "Reporting mode"
+description = "\"console\" to only log savings in the browser console, or an HTTPS URL that should receive a JSON payload per completed checkout."
 type = "single_line_text_field"
+validations = [
+  { name = "min", value = "1" }
+]

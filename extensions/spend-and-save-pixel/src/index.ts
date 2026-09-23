@@ -2,8 +2,8 @@ import {register} from '@shopify/web-pixels-extension';
 
 /**
  * Spend & save pixel: on checkout_completed, work out what the automatic tier discount saved
- * and report it. With `endpoint` set in the pixel settings it POSTs a small JSON payload
- * (keepalive, no PII beyond the order id); without it, it only logs to the console.
+ * and report it. The `mode` setting is either "console" (log only) or an HTTPS URL that receives
+ * a small JSON payload per checkout (keepalive, no PII beyond the order id).
  */
 register(({analytics, settings}) => {
   analytics.subscribe('checkout_completed', (event) => {
@@ -41,7 +41,7 @@ register(({analytics, settings}) => {
 
     console.log('[spend-and-save]', payload);
 
-    const endpoint = settings?.endpoint;
+    const endpoint = settings?.mode;
     if (typeof endpoint === 'string' && /^https:\/\//.test(endpoint)) {
       fetch(endpoint, {
         method: 'POST',
