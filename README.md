@@ -14,6 +14,16 @@ Built by Vibhas Gandhi on Checkout UI Extensions API 2026-07 (Preact + Polaris w
 
 Both UI targets are **static**. On a store with a customised checkout configuration (Shopify Plus checkout editor), the block still has to be added once in the editor (Order summary → Add block → the app's block) and the configuration saved; until then the checkout page does not even load the extension bundle. The `purchase.checkout.reductions.render-before` target was the first choice, but that slot does not exist when the store has no discount codes, so the progress block sits under the cart line list instead. Tiers are read from the shop metafield `$app:tiers` (same JSON shape as the Function's config) and fall back to the demo tiers (100/5%, 200/10%, 500/15% + free shipping).
 
+## Verified on a live Plus checkout
+
+| Cart | Checkout block | Thank-you banner |
+|------|----------------|------------------|
+| $34 | progress bar, "Add US$66.00 more to unlock 5% off." | — |
+| $278 | "You're getting **10% off** on this order. US$222.00 more unlocks 15% off + free shipping." | — |
+| $727 (order #1002) | "You're getting **15% off + free shipping** on this order. Top tier reached. Nice." | "You saved US$109.05 on this order. Thanks for brewing with us. Your Spend & save tier was applied automatically." |
+
+The discount itself comes from the companion Function (order discount −$109.05, Express $15 → FREE); this app only explains it.
+
 ## Layout
 
 ```
